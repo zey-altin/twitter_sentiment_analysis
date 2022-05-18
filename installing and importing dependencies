@@ -25,4 +25,3 @@ import matplotlib.patches as mpatches
 
 pd.options.plotting.backend = "plotly"
 
-
