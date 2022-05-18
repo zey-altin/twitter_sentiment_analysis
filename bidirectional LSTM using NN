@@ -152,3 +152,5 @@ predict_class(['The food was meh'])
 
 predict_class(['He is a best minister india ever had seen'])
 #Output: The predicted sentiment is Positive
+
+
