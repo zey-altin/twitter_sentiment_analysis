@@ -1,0 +1,58 @@
+# Cleaning and prepping dataset
+
+# Load Tweet dataset
+df1 = pd.read_csv('../input/twitter-and-reddit-sentimental-analysis-dataset/Twitter_Data.csv')
+
+# Output first five rows
+df1.head()
+
+
+# Load Tweet dataset
+df2 = pd.read_csv('../input/appletwittersentimenttexts/apple-twitter-sentiment-texts.csv')
+df2 = df2.rename(columns={'text': 'clean_text', 'sentiment':'category'})
+df2['category'] = df2['category'].map({-1: -1.0, 0: 0.0, 1:1.0})
+
+# Output first five rows
+df2.head()
+
+#The category column has 3 values:
+# 0 -> Indicating it is a Neutral Sentiment
+# 1 -> Indicating a Postive Sentiment
+# -1 -> Indicating a Negative Sentiment
+
+# Load Tweet dataset
+df3 = pd.read_csv('../input/twitterdata/finalSentimentdata2.csv')
+df3 = df3.rename(columns={'text': 'clean_text', 'sentiment':'category'})
+df3['category'] = df3['category'].map({'sad': -1.0, 'anger': -1.0, 'fear': -1.0, 'joy':1.0})
+df3 = df3.drop(['Unnamed: 0'], axis=1)
+
+# Output first five rows
+df3.head()
+
+# Load Tweet dataset
+df4 = pd.read_csv('../input/twitter-airline-sentiment/Tweets.csv')
+df4 = df4.rename(columns={'text': 'clean_text', 'airline_sentiment':'category'})
+df4['category'] = df4['category'].map({'negative': -1.0, 'neutral': 0.0, 'positive':1.0})
+df4 = df4[['category','clean_text']]
+
+# Output first five rows
+df4.head()
+
+df = pd.concat([df1, df2, df3, df4], ignore_index=True)
+
+# Check for missing data
+df.isnull().sum()
+
+
+# drop missing rows
+df.dropna(axis=0, inplace=True)
+
+# dimensionality of the data
+df.shape
+
+
+# Map tweet categories
+df['category'] = df['category'].map({-1.0:'Negative', 0.0:'Neutral', 1.0:'Positive'})
+
+# Output first five rows
+df.head()
