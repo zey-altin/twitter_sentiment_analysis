@@ -1,0 +1,26 @@
+!pip install tweepy
+
+
+import numpy as np # linear algebra
+import pandas as pd # data processing
+import os
+import tweepy as tw #for accessing Twitter API
+
+#For Preprocessing
+import re    # RegEx for removing non-letter characters
+import nltk  #natural language processing
+nltk.download("stopwords")
+from nltk.corpus import stopwords
+from nltk.stem.porter import *
+
+# For Building the model
+from sklearn.model_selection import train_test_split
+import tensorflow as tf
+import seaborn as sns
+
+#For data visualization
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+%matplotlib inline
+
+pd.options.plotting.backend = "plotly"
